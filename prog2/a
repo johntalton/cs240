@@ -1,0 +1,14 @@
+Process Main is
+	Var Pid : Integer;
+	Var C : Integer;
+	Var Num : Integer;
+Begin
+	Num := 0;
+	Pid := GetMyID;
+	For C From 0 To 20 Loop
+		Call R.StartRead();
+		Call R.Read(Var Num);
+		Call R.EndRead();
+		WriteLn( 'Reader a'+Pid+' read '+Num );
+	EndFor;
+End.End.

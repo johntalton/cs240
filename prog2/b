@@ -1,0 +1,20 @@
+Process Main is
+	Var Pid : Integer;
+	Var Junk : Integer;
+	Var C : Integer;
+	Var Num : Integer;
+	Var wait : Integer;
+	Var z : Integer;
+Begin
+	Pid := GetMyID;
+	For C From 1 To 10 Loop
+		For wait From 1 To 10 Loop
+			z := 10/3;
+		EndFor;
+		Junk := Pid+1;
+		Num := C*Junk;
+		Call W.WriteRqst();
+		Call W.Write(Num);
+		WriteLn( 'Writer b'+Pid+' wrote '+Num );
+	EndFor;
+End.

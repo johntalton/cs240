@@ -1,0 +1,48 @@
+Process Main is
+	Var Data : Integer;
+	Var readvar : Integer;
+	Var writevar : Integer;
+	Var Critical : Boolean;
+	Var count : Integer;
+Begin
+	writevar := 0;
+	readvar := 0;
+	Critical := TRUE;
+	Data := 0;
+	count := 0;
+	While TRUE Loop
+		Select
+			When count = 0 Then
+			Accept WriteRqst() Do
+				Critical := TRUE;
+			EndAccept
+			Or
+			Accept Write(writevar) Do
+				Data := writevar;
+				Critical := FALSE;
+			EndAccept
+			Or
+			When  NOT Critical Then
+			Accept StartRead() Do
+				count := count+1;
+			EndAccept
+			Or
+			Accept Read(Var readvar) Do
+				readvar := Data;
+			EndAccept
+			Or
+			Accept EndRead() Do
+				count := count-1;
+			EndAccept
+		EndSelect;
+	EndWhile;
+End.	EndSelect;
+	EndWhile;
+End.ount-1;
+			EndAccept
+		EndSelect;
+	EndWhile;
+End..EndAccept
+		EndSelect;
+	EndWhile;
+End.
