@@ -1,0 +1,288 @@
+# BNF Language Description
+# follow the template outlined below
+# spaces are important, sharpes mean ignore rest of line
+# quantity declarations MUST be correct
+
+#Language Name
+Language "Monitor Procedure"
+
+#Declare Quantities in this order
+#Nicknames for use in lists follows the type
+#ExternalMessages are referenced by M1
+Strings:77      #G
+Types:26        #T
+Structs:92      #S
+Repititions:12  #R
+Numbers:1       #N
+StringInputs:2  #I
+Declarations:12 #D
+Variables:7     #V
+Externals:9     #M
+
+#All lists must start at index 1 and increase by 1
+#If using new-line, must be by itself -
+Strings:
+1)"+"
+2)"-"
+3)"*"
+4)"/"
+5)"^"
+6)"( "
+7)" )"
+8)"\n"
+9)"Process Main is"
+10)"Begin"
+11)"End."
+12)"'"
+13)";\n"
+14)"WriteLn"
+15)"Write"
+16)"\n "
+17)"Integer"
+18)" : "
+19)" := "
+20)"String"
+21)"Boolean"
+22)"TRUE"
+23)"FALSE"
+24)"If "
+25)" Then\n"
+26)"EndIf"
+27)"Else\n"
+28)" To "
+29)" Down To "
+30)"For "
+31)" Loop\n"
+32)"EndFor"
+33)" From "
+34)" = "
+35)" OR "
+36)" AND "
+37)" > "
+38)" < "
+39)" >= "
+40)" <= "
+41)"Message "
+42)"Rend "
+43)"Asyn "
+44)"Var "
+45)", "
+46)"GetMyID"
+47)"Call "
+48)"Send "
+49)"Receive "
+50)"Accept "
+51)" "
+52)"EndAccept"
+53)" Do\n"
+54)"("
+55)")"
+56)"Select\n"
+57)"\nOr\n"
+58)"When ("
+59)"\nEndSelect"
+60)"While "
+61)"EndWhile"
+62)"Monitor Mon"
+63)" is;"
+64)"InitMonitor()\n"
+65)"CondVar "
+66)"End;"
+67)"Status"
+68)"Entry Mon"
+69)".E"
+70)"Wait"
+71)"Signal"
+72)" <> "
+73)"["
+74)"]"
+75)"%"
+76)"Return "
+77)"C"
+
+#InitialOutput:DecimalFlag,NegativeFlag,Maxdigits
+Numbers:
+1)Number Input:FALSE,FALSE,3
+
+#InitialOutput:StringType,Maxdigits
+StringInputs:
+1)<Empty String>:TEXT,25
+2)<Variable>:VARIABLE,11
+
+Types:
+1)Integer Factor:S1,S2,S3,N1,V1,S54,M3,S66,S85
+2)Integer Term:S4,S5,S1,S2,S3,N1,V1,S54,M3,S66,S85,S91
+3)Integer Expression:S6,S7,S4,S5,S1,S2,S3,N1,V1,S54,M3,S66,S85,S91
+4)Statements:S12,S13,S15,S16,S17,S18,S19,S20,S52,S53,S55,S56,S60,S61,S62,S81,S82,S83,S88,S89,S90,S92
+5)String Expression:S10,R4,V2,M4,S67,S86
+6)Printable Text:S10,S8,R4,V1,V2,V3,M4,M3,M2,S67
+7)Variable Declaration:D1,D2,D3,D4,D5,D6
+8)Boolean Expression:V3,S22,S23,S25,S26,M2,S68,S87,S54
+9) Loop Direction :G28,G29
+10)Boolean:V3,S22,S23,S26,M2,S68,S87 #For Args of OR
+11)Boolean:V3,S22,S23,S68,M2,S87 #Basic Boolean
+12)Int Compare:S27,S28,S29,S30,S21
+13)Message Declaration:S47
+14)Declaration Parameters:S31,S32,S33,S34,S35,S36,S48,S69,S70,S71,S75,S76,S77
+15)Parameters:S8,S10,V1,V2,V3,S39,S40,S41,S48,M2,M3,M4,S72,S73,S74,S78,S79,S80
+16)Statements:T4
+17)Message Acceptance:S49,S50
+18)Conditional:M1,S84
+19)Conditional Variable Declaration:D6
+20)Variable Initialization Statements:S15,S16,S17,S53
+21)Integer Array:V4
+22)String Array:V5
+23)Boolean Array:V6
+24)Parameter Variables:D7,D8,D9,D10,D11,D12,S48
+25)String:S10,V2,M4,S67,S86
+26)Condition:V3,S9,S22,S23,S25,S26,S21,S27,S28,S29,S30,S58,M2,S68,S87,S54
+
+#Name:IndentFlag,Structure1,Structure2,...
+Structs:
+1)( Int Expresssion ):FALSE,G6,T3,G7
+2)IntFactor ^ IntFactor:FALSE,T1,G5,T1
+3)Negative IntFactor:FALSE,G2,T1
+4)IntFactor * IntFactor:FALSE,T1,G3,T1
+5)IntFactor / IntFactor:FALSE,T1,G4,T1
+6)IntTerm + IntTerm:FALSE,T2,G1,T2
+7)IntTerm - IntTerm:FALSE,T2,G2,T2
+8)Integer Expression:FALSE,T3
+9)String Equality:FALSE,T25,G34,T25
+10)String:FALSE,G12,I1,G12
+11)Program:FALSE,G68,M8,G69,M9,G54,R12,G55,G13,R3,G10,G8,R1,G66
+12)Write Line:FALSE,G14,G6,T6,G7
+13)Write:FALSE,G15,G6,T6,G7
+14)Int Var2:FALSE,I2,G18,G17
+15)Int Var Assign:FALSE,V1,G19,T3
+16)Str Var Assign:FALSE,V2,G19,T5
+17)Boolean Var Assign:FALSE,V3,G19,T8
+18)If - Then:FALSE,G24,T26,G25,R1,G26
+19)If Then Else:FALSE,G24,T26,G25,R1,G27,R1,G26
+20)For Loop:FALSE,G30,V1,G33,T3,T9,T3,G31,R1,G32
+21)Int = Int:FALSE,T3,G34,T3
+22)TRUE:FALSE,G22
+23)FALSE:FALSE,G23
+24)Boolean Expression:FALSE,T8
+25)OR Expression:FALSE,T10,G35,T10
+26)AND Expression:FALSE,T11,G36,T11
+27)Int > Int:FALSE,T3,G37,T3
+28)Int < Int:FALSE,T3,G38,T3
+29)Int >= Int:FALSE,T3,G39,T3
+30)Int <= Int:FALSE,T3,G40,T3
+31)Int Var Reference:FALSE,G44,G17
+32)Boolean Var Reference:FALSE,G44,G21
+33)String Var Reference:FALSE,G44,G20
+34)Int Parameter:FALSE,G17
+35)String Parameter:FALSE,G20
+36)Boolean Parameter:FALSE,G21
+37)Process ID:FALSE,G46
+38)Call Message:FALSE,G47,G54,R7,G55
+39)Int Var Reference:FALSE,G44,V1
+40)String Var Reference:FALSE,G44,V2
+41)Boolean Var Reference:FALSE,G44,V3
+42)Send Message:FALSE,G48
+43)Receive Message:FALSE,G49
+44)Accept Message:FALSE,G50,G54,R7,G55,G53,R1,G52
+45)No Parameters:FALSE,G51
+46)Asynchronous Message:FALSE,G41,G43,I2,G54,R6,G55
+47)Rendezvous Message:FALSE,G41,G42,I2,G54,R6,G55
+48)No Parameters:FALSE,G51
+49)Guarded:FALSE,G58,T10,G25,G50,G53,R9,G52
+50)UnGuarded:FALSE,G50,G53,R9,G52
+51)Select Message:FALSE,G56,R8,G59
+52)While Loop:FALSE,G60,T26,G31,R1,G61
+53)Conditional Variable Assignment:FALSE,M1,G19,T8
+54)Status of Condition:FALSE,G67,G54,T18,G55
+55)Signal Condition:FALSE,G71,G54,T18,G55
+56)Wait Condition:FALSE,G70,G54,T18,G55
+57)Expression Not Equal:FALSE,T8,G72,T8
+58)Int <> Int:FALSE,T3,G72,T3
+59)Monitor Variable:FALSE,I2
+60)Monitor Integer Variable Assignment:FALSE,M3,G19,T3
+61)Monitor String Variable Assignment:FALSE,M4,G19,T5
+62)Monitor Boolean Variable Assignment:FALSE,M2,G19,T8
+63)Integer Array Assignment:FALSE,V4,G19,V4
+64)String Array Assignment:FALSE,V5,G19,V5
+65)Boolean Array Assignment:FALSE,V6,G19,V6
+66)Integer Array Item:FALSE,V4,G73,T3,G74
+67)String Array Item:FALSE,V5,G73,T5,G74
+68)Boolean Array Item:FALSE,V6,G73,T8,G74
+69)Integer Array Parameter:FALSE,G17,G73,G74
+70)String Array Parameter:FALSE,G20,G73,G74
+71)Boolean Array Parameter:FALSE,G21,G73,G74
+72)Integer Array Parameter:FALSE,V4
+73)String Array Parameter:FALSE,V5
+74)Boolean Array Parameter:FALSE,V6
+75)Integer Array Reference Parameter:FALSE,G44,G17,G73,G74
+76)String Array Reference Parameter:FALSE,G44,G20,G73,G74
+77)Boolean Array Reference Parameter:FALSE,G44,G21,G73,G74
+78)Integer Array Reference Parameter:FALSE,G44,V4
+79)String Array Reference Parameter:FALSE,G44,V5
+80)Boolean Array Reference Parameter:FALSE,G44,V6
+81)Integer Array Item Assignment:FALSE,V4,G73,T3,G74,G19,T3
+82)String Array Item Assignment:FALSE,V5,G73,T3,G74,G19,T5
+83)Boolean Array Item Assignment:FALSE,V6,G73,T3,G74,G19,T8
+84)Conditional Array Item:FALSE,G77,G73,T3,G74
+85)Monitor Integer Array Item:FALSE,M7,G73,T3,G74
+86)Monitor String Array Item:FALSE,M5,G73,T3,G74
+87)Monitor Boolean Array Item:FALSE,M6,G73,T3,G74
+88)Monitor Integer Array Item Assignment:FALSE,M7,G73,T3,G74,G19,T3
+89)Monitor String Array Item Assignment:FALSE,M5,G73,T3,G74,G19,T5
+90)Monitor Boolean Array Item Assignment:FALSE,M6,G73,T3,G74,G19,T8
+91)Mod Function:FALSE,T1,G75,T1
+92)Return Integer:FALSE,G76,G54,T3,G55
+
+#Name:LangTypeIndex,IndexofVarname,Structure,Structure,..
+Declares:
+1)Int Variable Declaration:3,2,G44,I2,G18,G17
+2)String VariableDeclaration:5,2,G44,I2,G18,G20
+3)Boolean Variable Declaration:8,2,G44,I2,G18,G21
+4)Integer Variable Array:18,2,G44,I2,G73,N1,G74,G18,G17
+5)String Variable Array:19,2,G44,I2,G73,N1,G74,G18,G20
+6)Boolean Variable Array:20,2,G44,I2,G73,N1,G74,G18,G21
+7)Integer Variable Declaration in Parameter:3,3,G17,G51,I2
+8)String Variable Declaration in Parameter:5,3,G20,G51,I2
+9)Boolean Variable Declaration in Parameter:8,3,G21,G51,I2
+10)Integer Variable Array Declaration in Parameter:18,5,G17,G73,G74,G51,I2
+11)String Variable Array Declaration in Parameter:19,5,G20,G73,G74,G51,I2
+12)Boolean Variable Array Declaration in Parameter:20,5,G21,G73,G74,G51,I2
+
+
+#Label:Variable Type
+Variables:
+1)Pos Int Variable:T3
+2)String Variable:T5
+3)Boolean Variable:T8
+4)Integer Variable Array:T21
+5)String Variable Array:T22
+6)Boolean Variable Array:T23
+7)Condition Variable:T18
+
+#Name:FinalDelimeter,IndentFlag,NeedAnyFlag,Delimeter,RepeatedType
+Repititions:
+1)Code Block:TRUE,TRUE,FALSE,G13,T4
+2)Int Expr Summation:FALSE,FALSE,TRUE,G1,T2
+3)Declaration Block:TRUE,TRUE,FALSE,G13,T7
+4)String Concatenation:FALSE,FALSE,TRUE,G1,T25
+5)Message Declaration Block:TRUE,FALSE,FALSE,G13,T13
+6)Parameter Declaration:FALSE,FALSE,FALSE,G45,T14
+7)Parameters:FALSE,FALSE,FALSE,G45,T15
+8)Selections:FALSE,TRUE,TRUE,G57,T17
+9)CodeBlock:TRUE,TRUE,FALSE,G13,T16
+10)Condition Declaration Block:TRUE,TRUE,FALSE,G13,T19
+11)Initialization Block:TRUE,TRUE,FALSE,G13,T20
+12)Parameter Variables:FALSE,FALSE,FALSE,G45,T24
+
+# Default Text:Keyname
+Externals:
+1)Condition Variable:condition
+2)Monitor Boolean Variable:monvarBoolean
+3)Monitor Integer Variable:monvarInteger
+4)Monitor String Variable:monvarString
+5)Monitor String Array:monvarStringArray
+6)Monitor Boolean Array:monvarBooleanArray
+7)Monitor Integer Array:monvarIntegerArray
+8)<Which Monitor:monnum
+9)<Which Entry>:entrynum
+
+Root:S11

@@ -1,0 +1,6 @@
+Entry Mon2.E0(Integer toWrite);
+	Var s : Integer;
+Begin
+	TheEnd := TheEnd+1;
+	Buffy[TheEnd] := toWrite;
+End;

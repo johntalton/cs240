@@ -1,0 +1,11 @@
+Entry Mon2.E1(Integer toRead);
+	Var t : Integer;
+Begin
+	If TheEnd > 0 Then
+		t := Buffy[TheEnd];
+		TheEnd := TheEnd-1;
+		Return (t);
+	Else
+		Return (0);
+	EndIf;
+End;

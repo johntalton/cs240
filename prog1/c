@@ -1,0 +1,18 @@
+Process c is
+	Var GetSome : Integer;
+	Var GotSome : Integer;
+	Var masterP : Integer;
+Begin
+	masterP := GetMyID;
+	While TRUE Loop
+		GetSome := Mon3.E1( );
+		If GetSome > 0 Then
+			Mon1.E0( );
+			Write( 'C' );
+			Write( masterP );
+			Write( ' fetched ' );
+			WriteLn( GetSome );
+			Mon1.E1( );
+		EndIf;
+	EndWhile;
+End.

@@ -1,0 +1,6 @@
+Entry Mon3.E0(Integer ToWrite);
+	Variable Declaration;
+Begin
+	OtherEnd := OtherEnd+1;
+	ScrwBuffy[OtherEnd] := ToWrite;
+End;

@@ -1,0 +1,13 @@
+Entry Mon3.E1( );
+	Var r : Integer;
+Begin
+	If OtherEnd > 0 Then
+		r := ScrwBuffy[OtherEnd];
+		OtherEnd := OtherEnd-1;
+		Return (r);
+	Else
+		Return (0);
+	EndIf;
+End; (0);
+	EndIf;
+End;

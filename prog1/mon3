@@ -1,0 +1,15 @@
+Monitor Mon3 is;
+Begin
+	Var ScrwBuffy[100] : Integer;
+	Var OtherEnd : Integer;
+	Var z : Integer;
+InitMonitor()
+Begin
+	For z From 1 To 99 Loop
+		ScrwBuffy[z] := 0;
+	EndFor;
+	OtherEnd := 1;
+End;or;
+	OtherEnd := 1;
+End; 1;
+End;

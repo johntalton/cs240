@@ -1,0 +1,19 @@
+Process a is
+	Var extra : Integer;
+	Var pid : Integer;
+	Var Number : Integer;
+	Var C : Integer;
+Begin
+	pid := GetMyID;
+	For C From 1 To 10 Loop
+		Mon1.E0( );
+		Write( 'A' );
+		Write( pid );
+		Write( ' generated ' );
+		extra := pid+1;
+		Number := C*extra;
+		WriteLn( Number );
+		Mon1.E1( );
+		Mon2.E0(Number);
+	EndFor;
+End.

@@ -1,0 +1,23 @@
+Process b is
+	Var wegotn : Integer;
+	Var wesetn : Integer;
+	Var pid : Integer;
+	Var x : Integer;
+Begin
+	pid := GetMyID;
+	While TRUE Loop
+		wegotn := Mon2.E1( );
+		If wegotn > 0 Then
+			wesetn := wegotn*wegotn;
+			Mon3.E0(wesetn);
+			Mon1.E0( );
+			Write( 'B' );
+			Write( pid );
+			Write( ' fetched ' );
+			Write( wegotn );
+			Write( ' and generated ' );
+			WriteLn( wesetn );
+			Mon1.E1( );
+		EndIf;
+	EndWhile;
+End.

@@ -1,0 +1,14 @@
+Monitor Mon2 is;
+Begin
+	Var Buffy[100] : Integer;
+	Var Begin : Integer;
+	Var TheEnd : Integer;
+	Var x : Integer;
+InitMonitor()
+Begin
+	Begin := 0;
+	TheEnd := 1;
+	For x From 1 To 99 Loop
+		Buffy[x] := 0;
+	EndFor;
+End;;
